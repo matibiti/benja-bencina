@@ -29,6 +29,19 @@ COMUNA = "Puerto Montt"
 RUTA_CSV = Path(__file__).resolve().parent.parent / "data" / "estaciones.csv"
 
 
+def ahora_chile():
+    """
+    Fecha y hora de Chile, aunque la app corra en un servidor de otro país (por ejemplo, Streamlit Cloud,
+    que usa la hora UTC). Si el computador no tiene la base de zonas horarias (Windows sin el paquete
+    tzdata), se usa la hora del computador, que en Chile ya es la correcta.
+    """
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("America/Santiago")).replace(tzinfo=None)
+    except Exception:
+        return datetime.now()
+
+
 def describir_codigo(codigo):
     """Traduce el código de estado HTTP a una explicación en español."""
     explicaciones = {
@@ -126,7 +139,8 @@ def obtener_datos():
         if not datos_json.get("data"):
             raise ValueError("la respuesta no trae la lista 'data' de estaciones")
 
-        fecha_consulta = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ahora = ahora_chile()
+        fecha_consulta = ahora.strftime("%Y-%m-%d %H:%M:%S")
         tabla = filtrar_comuna(json_a_tabla(datos_json, obtener_marcas(), fecha_consulta))
         if tabla.empty:
             raise ValueError(f"la respuesta no trae estaciones de {COMUNA}")
@@ -135,7 +149,7 @@ def obtener_datos():
         tabla.to_csv(RUTA_CSV, index=False)  # guardamos para el plan B (solo Puerto Montt)
         # Releemos el CSV para que ambos caminos (API y respaldo) entreguen exactamente el mismo formato
         tabla = cargar_respaldo()
-        mensaje = (f"Precios en vivo del {datetime.now():%d-%m-%Y a las %H:%M} · "
+        mensaje = (f"Precios en vivo del {ahora:%d-%m-%Y a las %H:%M} · "
                    f"{tabla['estacion_id'].nunique()} servicentros · la API respondió bien (código {respuesta.status_code}).")
         return tabla, "api", mensaje
 
