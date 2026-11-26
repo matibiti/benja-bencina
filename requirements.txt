@@ -5,3 +5,4 @@ requests>=2.31
 matplotlib>=3.7
 folium>=0.17
 streamlit-folium>=0.22
+tzdata>=2024.1

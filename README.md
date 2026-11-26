@@ -2,6 +2,8 @@
 
 Calcula el mejor lugar para cargar bencina en Puerto Montt, según dónde estás ubicado.
 
+**App publicada:** https://benja-bencina.streamlit.app (Streamlit Community Cloud). Si lleva horas sin visitas, aparece un botón para despertarla y tarda uno o dos minutos.
+
 Proyecto final (Solemne 3) del Taller de Programación II.
 
 **Pregunta:** Según dónde estés en Puerto Montt, ¿en qué servicentro te conviene cargar, cuánto te cuesta llegar

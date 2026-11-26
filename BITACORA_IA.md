@@ -24,6 +24,7 @@
 | 25-11-2026 | "Mándame lo que se solicita para el lunes: el informe, el proyecto y la presentación" | Borrador del informe (Word y PDF) con capturas, hallazgos y cifras calculadas desde `data/estaciones.csv`; este .zip; borrador de las diapositivas con notas para cada integrante | _completar_ | _completar_ |
 | 25-11-2026 | "En vez de litros, que se elija la plata que se carga (por ejemplo 20 lucas) y que indique cuántos litros te cargan; cambia todo lo asociado" | Filtro "¿Cuánta plata vas a cargar?"; nuevos indicadores (litros que te cargan, bencina del viaje y litros que te quedan); la recomendación pasa a ser el que deja más litros; gráficos, sensibilidad, informe y diapositivas recalculados | _completar_ | _completar_ |
 | 26-11-2026 | "Cambia el nombre de la página a Benja Bencina, con una descripción abajo; cámbialo en el informe y la presentación, y hazme un guion de la presentación" | Nombre "Benja Bencina" y descripción en la app, el informe y las diapositivas; guion de la presentación por integrante con tiempos según el enunciado | _completar_ | _completar_ |
+| 26-11-2026 | "El trabajo pide una URL: ¿cómo hacer que la app tenga URL y funcione 24/7?" | Pasos para publicar en Streamlit Community Cloud (la publicamos nosotros en https://benja-bencina.streamlit.app); corrección para mostrar la hora de Chile en el servidor (función ahora_chile y paquete tzdata) | _completar_ | _completar_ |
 
 ## Lista de verificación sugerida (marcar lo que hicieron)
 
